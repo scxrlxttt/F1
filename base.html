@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Formula 1</title>
+    <link type="text/css" rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <header>
+        <h1><a href="/">Formula 1</a></h1>
+        <h2>2025 Season</h2>
+    </header>
+    <nav>
+        <ul class='nav'>
+            <li><a href="/teams">Teams</a></li>
+            <li><a href="/drivers">Drivers</a></li>
+            <li><a href="/races">Races</a></li>
+        </ul>
+    </nav>
+    <main>
+        {% block main %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; Scarlett Le</p>
+    </footer>
+</body>
+</html>

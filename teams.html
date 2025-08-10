@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+
+{% block main %}
+  <h2>Teams</h2>
+
+  <h5>...</h5>
+  <table>
+    <thead>
+      <tr>
+        <th>Teams</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for team in teams%}
+      <tr>
+        <td><a href="/team/{{ team }}">{{ team }}</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
