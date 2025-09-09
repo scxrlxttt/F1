@@ -1,21 +1,47 @@
 {% extends "base.html" %}
 
+
 {% block main %}
   <h2>Drivers</h2>
+  
+  <nav class="driver-nav">
+      <ul class='nav'>
+        {% for driver in drivers %}
+          <li><a href="/driver/{{ driver }}">{{ driver }}</a></li>
+        {% endfor %}
+      </ul>
+  </nav>
 
-  <h5>...</h5>
-  <table>
-    <thead>
-      <tr>
-        <th>Driver</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for driver in drivers %}
-      <tr>
-        <td><a href="/driver/{{ driver }}">{{ driver }}</a></td>
-      </tr>
+  <br>
+  <br>
+  <hr>
+  <br>
+
+  <details>
+    <summary>Driver's Championship Standings</summary>
+    <br>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Position</th>
+          <th>Driver</th>
+          <th>Team</th>
+          <th>Points</th>
+        </tr>
+      </thead>
+      {% for result in all_driver_info%}
+      <tbody>
+        <tr>
+            <td>{{ result[5] }}</td>
+            <td><a href="/driver/{{ result[1] }}">{{ result[1] }}</a></td>
+            <td><a href="/team/{{ result[3] }}">{{ result[3] }}</a></td>
+            <td>{{ result[9] }}</td>
+        </tr>
+      </tbody>
       {% endfor %}
-    </tbody>
-  </table>
+    </table>
+
+  </details>
+
 {% endblock %}

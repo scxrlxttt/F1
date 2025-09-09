@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block main %}
+<div class="container">
+  <div class="content">
+    <h2>{{ title }}</h2>
+
+    {% for info in driver_info %}
+    <h4><a href="/team/{{ info[3] }}">{{ info[3] }}</h4>
+
+    <div class="summary">
+      <img id="headshot" src="/static/images/{{ info[13] }}.webp" alt={{ info[1] }}>
+      <div class="text-table">
+        <p>{{ info[14] }}</p>
+        <h5>Driver Details</h5>
+        <table>
+          <thead>
+            <tr>
+              <th>Number</th>
+              <th>Code</th>
+              <th>Nationality</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ info[0] }}</td>
+              <td>{{ info[2] }}</td>
+              <td>{{ info[4] }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <br>
+    <br>
+    
+    <h5>2025 Stats</h5>
+    <table>
+      <thead>
+        <tr>
+          <th>Championship Position</th>
+          <th>Season Wins</th>
+          <th>Season Podiums</th>
+          <th>Season Points</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ info[5] }}</td>
+          <td>{{ info[10] }}</td>
+          <td>{{ info[11] }}</td>
+          <td>{{ info[9] }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br>
+    <br>
+    
+    <h5>History</h5>
+    <table>
+      <thead>
+        <tr>
+          <th>Championships Won</th>
+          <th>Career Wins</th>
+          <th>Career Podiums</th>
+          <th>Races Entered</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ info[6] }}</td>
+          <td>{{ info[7] }}</td>
+          <td>{{ info[8] }}</td>
+          <td>{{ info[12] }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

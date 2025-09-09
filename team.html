@@ -1,5 +1,103 @@
 {% extends "base.html" %}
 
 {% block main %}
-<h2>{{ team }}</h2>
+{% for info in team_info %}
+<div class="container">
+  <div class="content">
+    
+    <div class="heading">
+      <img src="/static/images/{{ info[11] }}.png" alt={{ info[11] }}>
+      <h2>{{ title }}</h2>
+    </div>
+
+    <br>
+    <br>
+
+    <h4>{{ info[1] }}</h4>
+    <div class="summary">
+      <p>{{ info[14] }}</p>
+      <img id="hq" src="/static/images/{{ info[12] }}" alt={{ info[12] }}>
+    </div>
+
+    <br>
+    <br>
+    <hr>
+
+    <h5>2025 Stats</h5>
+    <table>
+      <thead>
+        <tr>
+          <th>Team Principal</th>
+          <th>Licensed Country</th>
+          <th>Chassis</th>
+          <th>Engine</th>
+          <th>Constructor's Championship Position</th>
+          <th>Points</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ info[4] }}</td>
+          <td>{{ info[5] }}</td>
+          <td>{{ info[2] }}</td>
+          <td>{{ info[3] }}</td>
+          <td>{{ info[6] }}</td>
+          <td>{{ info[7] }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br>
+
+    <img src="/static/images/{{ info[13] }}.avif" alt={{ info[2] }}>
+
+    <br>
+    <br>
+    <hr>
+
+    <h5>Drivers</h5>
+    <table>
+      <thead>
+        <tr>
+          {% for driver in drivers %}
+          <th><a href="/driver/{{ driver[1] }}">{{ driver[0] }}  |  {{ driver[1] }}</a></th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          {% for driver in drivers %}
+          <td><a href="/driver/{{ driver[1] }}"><img id="headshot" src="/static/images/{{ driver[13] }}.webp" alt={{ driver[1] }}></a></td>
+          {% endfor %}
+        </tr>
+      </tbody>
+    </table>
+
+    {% if info[0] == "Alpine" %}
+    <p>*Jack Doohan raced 6 Grand Prix for Alpine before being replaced by Franco Colapinto, due to his lack of performance.</p>
+    {% endif %}
+    
+    <br>
+    <hr>
+
+    <h5>History</h5>
+    <table>
+      <thead>
+        <tr>
+          <th>First Entry</th>
+          <th>Constructor's Won</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ info[8] }}</td>
+          <td>{{ info[9] }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    
+  </div>
+</div>
+{% endfor %}
 {% endblock %}

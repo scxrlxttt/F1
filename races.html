@@ -3,20 +3,9 @@
 
 {% block main %}
   <h2>Races</h2>
-
-  <h5>...</h5>
-  <table>
-    <thead>
-      <tr>
-        <th>Races</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for race in races %}
-      <tr>
-        <td><a href="/race/{{ race }}">{{ race }}</a></td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+  <ol>
+    {% for race in races %}
+      <li><a href="/race/{{ race }}">{{ race }}</a></li>
+    {% endfor %}
+  </ol>
 {% endblock %}

@@ -2,21 +2,48 @@
 
 
 {% block main %}
+
   <h2>Teams</h2>
 
-  <h5>...</h5>
+  <nav>
+      <ul class='nav'>
+        {% for team in teams%}
+          <li><a href="/team/{{ team }}">{{ team }}</a></li>
+        {% endfor %}
+      </ul>
+  </nav>
+
+  <p>Formula 1 teams are the engine behind every race. Combining engineering brilliance, strategy, and teamwork, they create cars capable of blistering speed and unmatched precision. Legendary squads like Ferrari, Mercedes, and McLaren mix decades of heritage with cutting-edge innovation, while rising teams push the limits to challenge the order.</p>
+
+  <p>Every decision—from pit stops to tyre strategy—is meticulously calculated, and rivalries extend far beyond the track. The teams are where technology, talent, and tactics collide, making every race weekend a high-stakes battle of skill, speed, and ingenuity.</p>
+
+  <br>
+  <hr>
+  <br>
+
+<details>
+  <summary>Constructor's Championship Standings</summary>
+  <br>
+
   <table>
     <thead>
       <tr>
-        <th>Teams</th>
+        <th>Position</th>
+        <th>Team</th>
+        <th>Points</th>
       </tr>
     </thead>
+    {% for result in all_team_info%}
     <tbody>
-      {% for team in teams%}
       <tr>
-        <td><a href="/team/{{ team }}">{{ team }}</a></td>
+          <td>{{ result[6] }}</td>
+          <td><a href="/team/{{ result[0] }}">{{ result[0] }}</a></td>
+          <td>{{ result[7] }}</td>
       </tr>
-      {% endfor %}
     </tbody>
+    {% endfor %}
   </table>
+
+</details>
+
 {% endblock %}

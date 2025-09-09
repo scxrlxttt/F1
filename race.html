@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+
+{% block main %}
+{% for info in race_info %}
+<div class="container">
+  <div class="content">
+    <h2>{{ title }}</h2>
+
+    <h4>Round {{ info[0] }}</h4>
+
+    <div class="summary">
+      <img id="raceimg" src="/static/images/{{ info[11] }}.avif" alt={{ info[2] }}>
+      <p>{{ info[14] }}</p>
+    </div>
+
+    <br>
+    <br>
+
+    <h5>2025 Race Details</h5>
+    <table>
+      <thead>
+        <tr>
+          <th>Round</th>
+          <th>Country</th>
+          <th>Venue</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ info[0] }}</td>
+          <td>{{ info[1] }}</td>
+          <td>{{ info[2] }}</td>
+          <td>{{ info[3] }} - {{ info[4] }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br>
+    <br>
+    <hr>
+    <br>
+    <br>
+    
+    <h4>{{ info[7] }}</h4>
+
+    <div class="summary">
+      <div class="text-table">
+        <p>{{ info[13] }}</p>
+        <h5>Circuit Details</h5>
+        <table>
+          <thead>
+            <tr>
+              <th>Track Length</th>
+              <th>Number of Laps</th>
+              <th>Race Distance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ info[8] }}km</td>
+              <td>{{ info[9] }}</td>
+              <td>{{ info[10] }}km</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+      <img id="hq" src="/static/images/{{ info[12] }}.avif" alt={{ info[7] }}>
+      </div>
+
+    <br>
+    <br>
+    <hr>
+    <br>
+
+    <h4>Race Results</h4>
+    <br>
+      
+    {% if results %}
+    <details>
+      <summary>Show/Hide Results</summary>
+      <table>
+        <thead>
+          <tr>
+            <th>Position</th>
+            <th>Driver</th>
+            <th>Time</th>
+            <th>Points</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for result in results %}
+          <tr>
+            <td>{{ result[1] }}</td>
+            <td>{{ result[2] }}</td>
+            <td>{{ result[3] }}</td>
+            <td>{{ result[4] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </details>
+      {% else %}
+        <p>No results available for this race.</p>
+    {% endif %}
+    
+    {% if sprint %}
+    <br>
+    <hr>
+    <br>
+
+    <h4>Sprint Race</h4>
+
+    <p>This Grand Prix also features a sprint race.</p>
+
+    <p>Sprint races are high-speed, shorter-format races held on select weekends to add extra excitement to Formula 1. Typically run on Saturdays, they set the starting grid for Sunday’s main Grand Prix and award a smaller number of championship points to the fastest finishers.</p>
+
+    <p>With fewer laps and no margin for error, Sprint races demand precision, aggression, and quick thinking. Drivers battle wheel-to-wheel from start to finish, making every overtake and defensive move count. For teams and fans alike, Sprint weekends offer a thrilling preview of what’s to come in the main race while adding an extra layer of strategy, tension, and unpredictability to the championship.</p>
+
+    <details>
+      <summary>Show/Hide Results</summary>
+      <table>
+        <thead>
+          <tr>
+            <th>Position</th>
+            <th>Driver</th>
+            <th>Time</th>
+            <th>Points</th>
+          </tr>
+        </thead>
+        {% for s in sprint %}
+        <tbody>
+          <tr>
+            <td>{{ s[1] }}</td>
+            <td>{{ s[2] }}</td>
+            <td>{{ s[3] }}</td>
+            <td>{{ s[4] }}</td>
+          </tr>
+        </tbody>
+        {% endfor %}
+      </table>
+
+    </details>
+    {% endif %}
+    
+  </div>
+</div>
+{% endfor %}
+{% endblock %}

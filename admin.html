@@ -1,0 +1,189 @@
+  {% extends "base.html" %}
+
+
+  {% block main %}
+
+  <!-- DRIVERS -->
+<h2>Admin</h2>
+<details>
+  <summary>Add New Driver</summary>
+  <form action="/add_driver" method="POST">
+    <input type="number" name="number" placeholder="Driver Number" required>
+    <br>
+    <input type="text" name="name" placeholder="Driver Name" required>
+    <br>
+    <input type="text" name="code"  maxlength="3" placeholder="Driver Code" required>
+    <p>A 3 letter code a driver can be identified by. Must be unique.</p>
+    <br>
+    <label for="team">Team:</label>
+    <select name="team" id="team" required>
+        {% for team in teams %}
+            <option value="{{ team[0] }}">{{ team[0] }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <input type="text" name="country" placeholder="Nationality" required>
+    <br>
+    <input type="number" name="championships_won" placeholder="Championships Won">
+    <br>
+    <input type="number" name="career_wins" placeholder="Career Wins">
+    <br>
+    <input type="number" name="career_podiums" placeholder="Career Podiums">
+    <br>
+    <p>Season Points, Wins, and Podiums will be totaled from race and sprint race results. To add season stats to a driver, add race results.</p>
+    <br>
+    <input type="number" name="races_entered" placeholder="Races Entered">
+    <br>
+    <textarea name="driver_description" placeholder="Driver Description"></textarea>
+    <br>
+    <button type="submit">Add Driver</button>
+  </form>
+</details>
+
+<br>
+
+<details>
+  <summary>Edit Driver</summary>
+  <form action="/edit_driver" method="POST">
+      <label for="driver_number">Select Driver to Edit:</label>
+      <select name="driver_number" id="driver_number" required>
+          {% for driver in drivers %}
+              <option value="{{ driver[0] }}">{{ driver[1] }}</option>
+          {% endfor %}
+      </select>
+    <p>You cannot edit the name, number or code of a driver.</p>
+    <label for="team">Team:</label>
+    <select name="team" id="team" required>
+        {% for team in teams %}
+            <option value="{{ team[0] }}">{{ team[0] }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <input type="text" name="country" placeholder="Nationality">
+    <br>
+    <input type="number" name="championships_won" placeholder="Championships Won">
+    <br>
+    <input type="number" name="career_wins" placeholder="Career Wins">
+    <br>
+    <input type="number" name="career_podiums" placeholder="Career Podiums">
+    <br>
+    <p>Season Points, Wins, and Podiums are totaled from race and sprint race results. To edit season stats, edit race results.</p>
+    <br>
+    <input type="number" name="races_entered" placeholder="Races Entered">
+    <br>
+    <textarea name="driver_description" placeholder="Driver Description"></textarea>
+    <br>
+      <button type="submit"> Save Changes</button>
+  </form>
+</details>
+
+<br>
+
+<details>
+  <summary>Delete Driver</summary>
+  <form action="/delete_driver" method="POST">
+      <label for="driver_number">Select Driver to Delete:</label>
+      <select name="driver_number" id="driver_number" required>
+          {% for driver in drivers %}
+              <option value="{{ driver[0] }}">{{ driver[1] }}</option>
+          {% endfor %}
+      </select>
+
+      <button type="submit">Delete Driver</button>
+  </form>
+</details>
+
+<br>
+<hr>
+<br>
+
+  <!-- RACE RESULTS -->
+<details>
+  <summary>Add Race Result</summary>
+  <form action="/add_race_result" method="POST">
+    <select name="race" id="race" required>
+        {% for race in races %}
+            <option value="{{ race[0] }}">{{ race[1] }}</option>
+        {% endfor %}
+    </select>
+    <select name="driver_code" id="driver_code" required>
+        {% for driver in drivers %}
+            <option value="{{ driver[2] }}">{{ driver[2] }}</option>
+        {% endfor %}
+    </select>
+    <input type="number" name="position" placeholder="Position" min="1" max="25" required>
+    <button type="submit">Add Race Result</button>
+  </form>
+</details>
+
+<br>
+
+<details>
+  <summary>Delete Race Result</summary>
+      <form action="/delete_race_result" method="POST">
+    <select name="race" id="race" required>
+        {% for race in races %}
+            <option value="{{ race[0] }}">{{ race[1] }}</option>
+        {% endfor %}
+    </select>
+    <select name="driver_code" id="driver_code" required>
+        {% for driver in drivers %}
+            <option value="{{ driver[2] }}">{{ driver[2] }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Delete Race Result</button>
+  </form>
+</details>
+
+<br>
+<hr>
+<br>
+
+  <!-- SPRINT RESULTS -->
+<details>
+  <summary>Add Sprint Result</summary>
+  <form action="/add_sprint_result" method="POST">
+    <select name="race" id="race" required>
+        {% for sprint in sprints %}
+            <option value="{{ sprint[0] }}">{{ sprint[1] }}</option>
+        {% endfor %}
+    </select>
+    <select name="driver_code" id="driver_code" required>
+        {% for driver in drivers %}
+            <option value="{{ driver[2] }}">{{ driver[2] }}</option>
+        {% endfor %}
+    </select>
+    <input type="number" name="position" placeholder="Position" min="1" max="25" required>
+    <button type="submit">Add Sprint Result</button>
+  </form>
+</details>
+
+<br>
+
+<details>
+  <summary>Delete Sprint Result</summary>
+      <form action="/delete_sprint_result" method="POST">
+    <select name="race" id="race" required>
+        {% for race in races %}
+            <option value="{{ race[0] }}">{{ race[1] }}</option>
+        {% endfor %}
+    </select>
+    <select name="driver_code" id="driver_code" required>
+        {% for driver in drivers %}
+            <option value="{{ driver[2] }}">{{ driver[2] }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Delete Sprint Result</button>
+  </form>
+</details>
+
+<br> 
+<hr>
+
+<p>To edit an existing race or sprint result, delete the existing result and add a new one.</p>
+<p>Teams cannot be edited as these are not subject to change throughtout a season.</p>
+
+</body>
+</html>
+
+{% endblock %}

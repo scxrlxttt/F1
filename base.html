@@ -8,13 +8,21 @@
 <body>
     <header>
         <h1><a href="/">Formula 1</a></h1>
-        <h2>2025 Season</h2>
     </header>
     <nav>
         <ul class='nav'>
+            <li><a href="/">Home</a></li></li>
             <li><a href="/teams">Teams</a></li>
             <li><a href="/drivers">Drivers</a></li>
             <li><a href="/races">Races</a></li>
+            {% if session.get("email") %}
+              <!-- If user is logged in -->
+            <li><a href="/admin">Admin</a></li>
+            <li><a href="/logout">Logout</a></li>
+            {% else %}
+              <!-- If user is not logged in -->
+            <li><a href="/login">Login</a></li>
+            {% endif %}
         </ul>
     </nav>
     <main>
