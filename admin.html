@@ -51,7 +51,7 @@
               <option value="{{ driver[0] }}">{{ driver[1] }}</option>
           {% endfor %}
       </select>
-    <p>You cannot edit the name, number or code of a driver.</p>
+    <p>You cannot edit the name, number, code, or nationality of a driver.</p>
     <label for="team">Team:</label>
     <select name="team" id="team" required>
         {% for team in teams %}
@@ -59,17 +59,11 @@
         {% endfor %}
     </select>
     <br>
-    <input type="text" name="country" placeholder="Nationality">
-    <br>
     <input type="number" name="championships_won" placeholder="Championships Won">
     <br>
-    <input type="number" name="career_wins" placeholder="Career Wins">
-    <br>
-    <input type="number" name="career_podiums" placeholder="Career Podiums">
-    <br>
+    <p>Career Wins and Podiums are automatically updated when results are added.</p>
     <p>Season Points, Wins, and Podiums are totaled from race and sprint race results. To edit season stats, edit race results.</p>
-    <br>
-    <input type="number" name="races_entered" placeholder="Races Entered">
+    <p>Race Entries are updated per race result.</p>
     <br>
     <textarea name="driver_description" placeholder="Driver Description"></textarea>
     <br>
