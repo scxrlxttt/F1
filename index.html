@@ -3,9 +3,12 @@
 
 {% block main %}
 
-  <h2>Formula 1</h2>
+  <img id="banner" src="/static/images/banner.jpg" alt="F1 Banner">
+
+  <br>
   
   <h4><i>Home of risk takers, late brakers and history makers</i></h4>
+
   
   <p>Formula 1 is the pinnacle of motorsport, where speed, strategy, and sheer adrenaline converge on the world’s most prestigious racetracks. Imagine the roar of finely tuned engines as they unleash over 1,000 horsepower, propelling sleek, high-tech machines to blistering speeds of over 200 mph. In this global spectacle, the world’s best drivers push the limits of human and machine, navigating hairpin turns, tight corners, and high-speed straights with precision and nerves of steel.</p>
   
@@ -33,7 +36,7 @@
           <th>Points</th>
         </tr>
       </thead>
-      {% for team in all_team_info%}
+      {% for team in teams%}
       <tbody>
         <tr>
             <td>{{ team[6] }}</td>
@@ -62,13 +65,13 @@
           <th>Points</th>
         </tr>
       </thead>
-      {% for result in all_driver_info%}
+      {% for driver in drivers%}
       <tbody>
         <tr>
-            <td>{{ result[5] }}</td>
-            <td><a href="/driver/{{ result[1] }}">{{ result[1] }}</a></td>
-            <td><a href="/team/{{ result[3] }}">{{ result[3] }}</a></td>
-            <td>{{ result[9] }}</td>
+            <td>{{ driver[5] }}</td>
+            <td><a href="/driver/{{ driver[2] }}">{{ driver[1] }}</a></td>
+            <td><a href="/team/{{ driver[3] }}">{{ driver[3] }}</a></td>
+            <td>{{ driver[9] }}</td>
         </tr>
       </tbody>
       {% endfor %}

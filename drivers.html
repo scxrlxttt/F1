@@ -3,16 +3,22 @@
 
 {% block main %}
   <h2>Drivers</h2>
+
+  <img id="banner" src="/static/images/driversbanner.jpg" alt="F1 Drivers Banner">
   
+
   <nav class="driver-nav">
       <ul class='nav'>
         {% for driver in drivers %}
-          <li><a href="/driver/{{ driver }}">{{ driver }}</a></li>
+          <li><a href="/driver/{{ driver[2] }}">{{ driver[1] }}</a></li>
         {% endfor %}
       </ul>
   </nav>
 
-  <br>
+<p>F1 drivers are the heart of the sport, combining raw talent, precision, and nerves of steel. From seasoned champions to rising stars, they push themselves and their cars to the absolute limit every lap.
+
+Every overtake, every split-second decision, and every daring move defines their place on the grid. These athletes aren’t just racing—they’re crafting history, chasing glory, and turning every circuit into a stage for speed, skill, and relentless determination.</p>
+
   <br>
   <hr>
   <br>
@@ -30,13 +36,13 @@
           <th>Points</th>
         </tr>
       </thead>
-      {% for result in all_driver_info%}
+      {% for driver in drivers%}
       <tbody>
         <tr>
-            <td>{{ result[5] }}</td>
-            <td><a href="/driver/{{ result[1] }}">{{ result[1] }}</a></td>
-            <td><a href="/team/{{ result[3] }}">{{ result[3] }}</a></td>
-            <td>{{ result[9] }}</td>
+            <td>{{ driver[5] }}</td>
+            <td><a href="/driver/{{ driver[2] }}">{{ driver[1] }}</a></td>
+            <td><a href="/team/{{ driver[3] }}">{{ driver[3] }}</a></td>
+            <td>{{ driver[9] }}</td>
         </tr>
       </tbody>
       {% endfor %}

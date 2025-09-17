@@ -4,7 +4,8 @@
   {% block main %}
 
   <!-- DRIVERS -->
-<h2>Admin</h2>
+<h2>Driver Admin</h2>
+
 <details>
   <summary>Add New Driver</summary>
   <form action="/add_driver" method="POST">
@@ -88,10 +89,10 @@
 </details>
 
 <br>
-<hr>
-<br>
 
   <!-- RACE RESULTS -->
+<h2>Race Results Admin</h2>
+
 <details>
   <summary>Add Race Result</summary>
   <form action="/add_race_result" method="POST">
@@ -130,10 +131,10 @@
 </details>
 
 <br>
-<hr>
-<br>
 
   <!-- SPRINT RESULTS -->
+<h2>Sprint Race Results Admin</h2>
+
 <details>
   <summary>Add Sprint Result</summary>
   <form action="/add_sprint_result" method="POST">
@@ -171,13 +172,48 @@
   </form>
 </details>
 
-<br> 
+<br>
+<br>
+<br>
 <hr>
 
 <p>To edit an existing race or sprint result, delete the existing result and add a new one.</p>
-<p>Teams cannot be edited as these are not subject to change throughtout a season.</p>
+<p>Teams cannot be edited as these are not subject to change throughout a season.</p>
 
-</body>
+<br>
+
+<h2>User Admin</h2>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Admin</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for user in users %}
+    <tr>
+      <td>{{ user[0] }}</td>
+      <td>{{ user[1] }} {{ user[2] }}</td>
+      <td>{{ user[3] }}</td>
+      <td>
+          <form action="/edit_admin/{{ user[0] }}" method="POST">
+              <select name="admin" id="admin" required>
+                  <option value=1 {% if user[5] == 1 %}selected{% endif %}>Admin</option>
+                  <option value=0 {% if user[5] == 0 %}selected{% endif %}>User</option>
+              </select>
+              <button type="submit">Save</button>
+          </form>
+      </td>
+      <td><a id="button" href="/delete_account/{{ user[0] }}">Delete User</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
 </html>
 
 {% endblock %}

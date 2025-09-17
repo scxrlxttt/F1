@@ -8,10 +8,13 @@
   <nav>
       <ul class='nav'>
         {% for team in teams%}
-          <li><a href="/team/{{ team }}">{{ team }}</a></li>
+          <li><a href="/team/{{ team[0] }}">{{ team[0] }}</a></li>
         {% endfor %}
       </ul>
   </nav>
+
+  <img id="banner" src="/static/images/teamsbanner.jpg" alt="F1 Teams Banner">
+
 
   <p>Formula 1 teams are the engine behind every race. Combining engineering brilliance, strategy, and teamwork, they create cars capable of blistering speed and unmatched precision. Legendary squads like Ferrari, Mercedes, and McLaren mix decades of heritage with cutting-edge innovation, while rising teams push the limits to challenge the order.</p>
 
@@ -33,12 +36,12 @@
         <th>Points</th>
       </tr>
     </thead>
-    {% for result in all_team_info%}
+    {% for team in teams%}
     <tbody>
       <tr>
-          <td>{{ result[6] }}</td>
-          <td><a href="/team/{{ result[0] }}">{{ result[0] }}</a></td>
-          <td>{{ result[7] }}</td>
+          <td>{{ team[6] }}</td>
+          <td><a href="/team/{{ team[0] }}">{{ team[0] }}</a></td>
+          <td>{{ team[7] }}</td>
       </tr>
     </tbody>
     {% endfor %}

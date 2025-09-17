@@ -4,7 +4,13 @@
 {% for info in race_info %}
 <div class="container">
   <div class="content">
-    <h2>{{ title }}</h2>
+
+    <div class="heading line">
+      <h2>{{ info[5] }}</h2>
+      <a id="button" href="/add_fav_race/{{ info[0] }}"> ♡ Add Race to Favourites </a>
+    </div>
+
+    <br>
 
     <h4>Round {{ info[0] }}</h4>
 
@@ -93,7 +99,7 @@
           {% for result in results %}
           <tr>
             <td>{{ result[1] }}</td>
-            <td>{{ result[2] }}</td>
+            <td><a href="/driver/{{ result[2] }}">{{ result[2] }}</a></td>
             <td>{{ result[3] }}</td>
             <td>{{ result[4] }}</td>
           </tr>
@@ -133,7 +139,7 @@
         <tbody>
           <tr>
             <td>{{ s[1] }}</td>
-            <td>{{ s[2] }}</td>
+            <td><a href="/driver/{{ s[2] }}">{{ s[2] }}</a></td>
             <td>{{ s[3] }}</td>
             <td>{{ s[4] }}</td>
           </tr>

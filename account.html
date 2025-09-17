@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+
+{% block main %}
+
+<h2>Account Details</h2>
+
+<div class="heading">
+    <div class="text-table">
+        {% for detail in user_details %}
+        <h6>Name: <span style="color: white;">{{ detail[1] }} {{ detail[2] }}</span></h6>
+        <h6>Email: <span style="color: white;">{{ detail[3] }}</span></h6>
+        {% endfor %}
+    </div>
+
+    <a id="button" href="/delete_account">Delete Account</a>
+</div>
+
+<br>
+
+<details>
+  <summary>Edit Account</summary>
+  <form action="/edit_account" method="POST">
+    <input type="text" name="fname" placeholder="First Name">
+    <br>
+    <input type="text" name="lname" placeholder="Last Name">
+    <br>
+    <input type="text" name="email" placeholder="Email">
+    <br>
+    <p>You cannot change your password</p>
+    <br>
+      <button type="submit">Save Changes</button>
+  </form>
+</details>
+
+<br>
+<br>
+
+<h2>♥ Favourites</h2>
+
+<h3>Teams:</h3>
+{% for team in teams %}
+<div class="heading">
+    <a id="favourite" href="/team/{{ team[0] }}">{{ team[0] }}</a>
+    <a id="button" href="/remove_fav_team/{{ team[0] }}">Remove</a>
+</div>
+{% endfor %}
+
+<br>
+<hr>
+
+<h3>Drivers:</h3>
+{% for driver in drivers %}
+<div class="heading">
+    <a id="favourite" href="/driver/{{ driver[1] }}">{{ driver[1] }}</a>
+    <a id="button" href="/remove_fav_driver/{{ driver[0] }}">Remove</a>
+</div>
+{% endfor %}
+
+<br>
+<hr>
+
+<h3>Races:</h3>
+{% for race in races %}
+<div class="heading">
+    <a id="favourite" href="/race/{{ race[0] }}">{{ race[1] }}</a>
+    <a id="button" href="/remove_fav_race/{{ race[0] }}">Remove</a>
+</div>
+{% endfor %}
+
+
+{% endblock %}

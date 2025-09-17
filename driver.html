@@ -1,11 +1,17 @@
 {% extends "base.html" %}
 
 {% block main %}
+{% for info in driver_info %}
 <div class="container">
   <div class="content">
-    <h2>{{ title }}</h2>
 
-    {% for info in driver_info %}
+    <div class="heading line">
+      <h2>{{ info[1] }}</h2>
+      <a id="button" href="/add_fav_driver/{{ info[2] }}"> ♡ Add Driver to Favourites </a>
+    </div>
+
+    <br>
+
     <h4><a href="/team/{{ info[3] }}">{{ info[3] }}</h4>
 
     <div class="summary">
@@ -33,6 +39,7 @@
     </div>
 
     <br>
+    <hr>
     <br>
     
     <h5>2025 Stats</h5>
@@ -56,6 +63,7 @@
     </table>
 
     <br>
+    <hr>
     <br>
     
     <h5>History</h5>

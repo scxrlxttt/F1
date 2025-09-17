@@ -6,16 +6,21 @@
   <div class="content">
     
     <div class="heading">
-      <img src="/static/images/{{ info[11] }}.png" alt={{ info[11] }}>
-      <h2>{{ title }}</h2>
+      <div class="left-side">
+        <img src="/static/images/{{ info[11] }}.png" alt="{{ info[11] }}">
+        <h2>{{ info[0] }}</h2>
+      </div>
+
+      <a id="button" href="/add_fav_team/{{ info[0] }}">♡ Add Team to Favourites</a>
     </div>
 
-    <br>
-    <br>
-
-    <h4>{{ info[1] }}</h4>
     <div class="summary">
-      <p>{{ info[14] }}</p>
+      <div class="text-table">
+        <h4>{{ info[1] }}</h4>
+        <br>
+        <p>{{ info[14] }}</p>
+      </div>
+      
       <img id="hq" src="/static/images/{{ info[12] }}" alt={{ info[12] }}>
     </div>
 
@@ -27,21 +32,21 @@
     <table>
       <thead>
         <tr>
+          <th>Constructor's Championship Position</th>
           <th>Team Principal</th>
           <th>Licensed Country</th>
           <th>Chassis</th>
           <th>Engine</th>
-          <th>Constructor's Championship Position</th>
           <th>Points</th>
         </tr>
       </thead>
       <tbody>
         <tr>
+          <td>{{ info[6] }}</td>
           <td>{{ info[4] }}</td>
           <td>{{ info[5] }}</td>
           <td>{{ info[2] }}</td>
           <td>{{ info[3] }}</td>
-          <td>{{ info[6] }}</td>
           <td>{{ info[7] }}</td>
         </tr>
       </tbody>
@@ -60,14 +65,14 @@
       <thead>
         <tr>
           {% for driver in drivers %}
-          <th><a href="/driver/{{ driver[1] }}">{{ driver[0] }}  |  {{ driver[1] }}</a></th>
+          <th><a href="/driver/{{ driver[2] }}">{{ driver[0] }}  |  {{ driver[1] }}</a></th>
           {% endfor %}
         </tr>
       </thead>
       <tbody>
         <tr>
           {% for driver in drivers %}
-          <td><a href="/driver/{{ driver[1] }}"><img id="headshot" src="/static/images/{{ driver[13] }}.webp" alt={{ driver[1] }}></a></td>
+          <td><a href="/driver/{{ driver[2] }}"><img id="headshot" src="/static/images/{{ driver[13] }}.webp" alt={{ driver[1] }}></a></td>
           {% endfor %}
         </tr>
       </tbody>

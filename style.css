@@ -46,14 +46,15 @@ h2, h3, h4, h5 {
 h2 {
     font-size: 2.5rem;
     margin-bottom: 20px;
-    border-bottom: 2px solid #d71920;
     padding-bottom: 10px;
+    border-bottom: 2px solid #d71920;
 }
 
 h3 {
-    font-family: 'Impact', sans-serif;
-    font-size: 2rem;
-    font-weight: 200;
+    font-size: 1.6rem;
+    margin: 0;
+    padding: 0;
+    color: #d71920;
 }
 
 h4 {
@@ -67,6 +68,13 @@ h5 {
     color: #d71920;
     font-size: 1.3em;
     text-align: center;
+}
+
+h6 {
+    color: #d71920;
+    font-size: 1.1em;
+    margin: 0;
+    padding: 0;
 }
 
 main ol {
@@ -111,9 +119,6 @@ main ol li:hover a {
 .summary {
     height: auto;
     margin-top: 20px;
-    border-radius: 15px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease;
 }
 
 #hq {
@@ -126,6 +131,14 @@ main ol li:hover a {
 
 #raceimg {
     width: 65%;
+}
+
+#banner {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    box-shadow: none;
+    transition: none;
 }
 
 .text-table {
@@ -200,35 +213,47 @@ nav ul li a {
 
 
 /* Table Styles */
+/* General table styling */
 table {
     width: 100%;
     margin-top: 20px;
+    margin-bottom: 40px; /* Adds space below tables */
     border-collapse: collapse;
     font-size: 0.9rem;
+    border-radius: 10px;
+    overflow: hidden; /* Ensures rounded corners */
 }
 
-thead {
-    background-color: #d71920;
-    color: #fff;
-}
-
-tbody tr:nth-child(odd) {
-    background-color: #1a1a1a;
-}
-
-tbody tr:nth-child(even) {
-    background-color: #333;
-}
-
-th, td {
-    padding: 12px 15px;
+/* Table Header */
+table th, td {
+    padding: 12px 20px;
     border: 1px solid #444;
     text-align: center;
 }
 
-th {
+/* Header style */
+table thead {
+    background-color: #d71920;
+    color: white;
     text-transform: uppercase;
 }
+
+/* Hover effect for rows */
+table tbody tr:hover {
+    background-color: #444; /* Slightly lighter on hover */
+}
+
+/* Links in the table */
+table td a {
+    color: #d71920; /* Links with red color */
+    font-weight: bold;
+    text-decoration: none;
+}
+
+table td a:hover {
+    text-decoration: underline;
+}
+
 
 /* Forms */
 form {
@@ -274,30 +299,48 @@ footer p {
 
 /*Class Styles*/
 .heading {
-    display: flex; 
-    align-items: center;
+  display: flex;
+  justify-content: space-between; /* pushes left and right sides apart */
+  align-items: center;
+}
+
+.left-side {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* space between image and title */
+}
+
+.left-side h2 {
+ border-bottom: 2px solid #d71920;
+}
+
+.line {
+  border-bottom: 2px solid #d71920;
+}
+
+.line h2 {
+  border-bottom: none;
 }
 
 .heading img {
-    max-height: 100px;
-    width: auto;
-    margin-top: 5px;
-    margin-right: 50px;
-    border-radius: 30px;
+  max-height: 100px;
+  width: auto;
+  max-width: 200px;
+  margin-top: 5px;
+  margin-right: 50px;
 }
+
+.heading h2 {
+  margin: 0; /* remove default margin */
+}
+
 
 /* Image Styles */
 img {
     width: 100%;
     height: auto;
-    margin-top: 20px;
-    border-radius: 15px;
     /* box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease; */
-}
-
-img:hover {
-    transform: scale(1.05);
 }
 
 /* Responsive design */
@@ -366,4 +409,77 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
     background-color: #b9151c;
+}
+
+details summary {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #f7f7f7;
+    cursor: pointer;
+    padding: 10px;
+    border: 2px solid #444;
+    background-color: #222;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+details[open] summary {
+    background-color: #d71920;
+    color: white;
+}
+
+details summary:hover {
+    background-color: #444;
+}
+
+details p {
+    padding: 20px;
+    background-color: #222;
+    border-radius: 5px;
+}
+
+/* Container to align h4 and #favourite on same line */
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.header-row h4 {
+    margin: 0;
+    flex: 1;
+}
+
+#button {
+    display: inline-block;
+    background-color: #d71920;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+#button:hover {
+    background-color: #b9151c;
+    transform: scale(1.05);
+    text-decoration: none;
+}
+
+#favourite {
+    display: inline-block;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-decoration: none;
+}
+
+#favourite:hover {
+    text-decoration: underline;
 }
